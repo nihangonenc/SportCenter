@@ -3,13 +3,13 @@ window.addEventListener('scroll', function() {
     let header = document.querySelector('header');
     let show = document.querySelector("#navbar");
     let scrollPosition = window.scrollY;
+    
     if (scrollPosition > 20) {
         header.style.backgroundColor = '#325492'; 
         show.style.backgroundColor ='#325492';
     }else {
         header.style.backgroundColor = 'rgba(255, 255, 255, 0)'
         show.style.backgroundColor = 'rgba(255, 255, 255, 0)'
-
     }
 });
 
@@ -133,5 +133,3 @@ function initMap() {
 document.querySelector('.hamburger-menu').addEventListener('click', function () {
     document.querySelector('#navbar').classList.toggle('show-menu');
 });
-const menu = document.querySelector('.show-menu');
-menu.classList.add('hidden');
