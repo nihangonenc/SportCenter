@@ -1,5 +1,6 @@
 # Sport Center Projesi
 
+https://nihangonenc-sport-center.netlify.app/
 
 ## Kullanılan Teknolojiler
 Html, Css, JavaScript
