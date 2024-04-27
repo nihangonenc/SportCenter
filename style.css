@@ -1,0 +1,592 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    text-decoration: none;
+    /* width: (100%, 70rem); */
+}
+html {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+:root {
+    --blue-color: #355592;
+    --orange-color: #F69D08;
+    --aquablue-color: #F2F8FF;
+    --gray-color: #4D4D4D;
+    --text-color: white;
+    --after-left: 5%;
+}
+
+/******* Header Section ********/
+
+header {
+    position: fixed;
+    z-index: 10; /* daha sonra kullanacağım absolute'lerin üstünde kalması için verdim */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    top:0;
+    left:0;
+    background-color: rgba(255, 255, 255, 0)
+  
+}
+header a{
+    cursor: pointer;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    margin-right: 3rem;
+    padding: 1rem;
+    font-weight: bold;
+    
+}
+header > nav > a:hover {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--text-color);
+    color:var(--blue-color);
+}
+.join-btn {
+    background-color: var(--orange-color);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+}
+.join-btn:hover {
+    background-color:var(--text-color);
+    color:var(--blue-color);
+}
+.hamburger-menu {
+    display: none; /* Başlangıçta gizli olacak */
+    cursor: pointer;
+    padding-right: 3rem;
+} 
+/******** Hero Section ******/
+.hero {
+    padding: 1rem 17rem;
+    display: flex;
+    flex-direction: column;
+    background-image: url(img/hero-man.jpg);
+    background-size: cover;
+    background-position: center;
+    color: var(--text-color);
+    padding: 12rem 12rem;
+}
+.hero-text > div > span {
+    font-size: 5rem;
+    font-weight: bold;
+}
+.hero-text > p {
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: rgba(14, 14, 14, 0.428)
+}
+.power-btn, .sign-btn {
+    color: var(--text-color);
+    background-color: var(--blue-color);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+.details-btn {
+    margin-left: 4rem;
+    color: var(--text-color);
+    background-color: rgba(255, 255, 255, 0); /* şeffaflığı sağladım */
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+    border: 0.1rem solid var(--text-color);
+}
+.sign-btn:hover, .details-btn:hover{
+    background-color: var(--orange-color);
+
+}
+/*******   Info Section   *******/
+
+.info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    align-items: center;
+    gap: 3rem;
+    padding: 3rem;
+    background-color: var(--aquablue-color);
+}
+.info div {
+    text-align: center;
+    background-color: var(--text-color);
+    padding: 2rem;
+    font-size: 1.7rem;
+    width: 20rem;
+}
+.number {
+    color: var(--blue-color);
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+/*******   Classes Section   *******/
+
+.btns {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5rem;
+    
+}
+.btn {
+    padding: 1rem 1.5rem;
+    background-color: var(--blue-color);
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    position: relative;
+    color:var(--text-color);
+    font-size: 1.5rem;
+    transition: box-shadow 0.3s ease; /* gölgenin geliş özellikleri*/
+}
+.selected{
+    background-color: var(--orange-color);
+    box-shadow: 0 0 1rem var(--orange-color); 
+}
+.selected::after { /* butonlar active olduğunda afterına bir şey ekle*/
+    content:"";
+    position: absolute;
+    bottom: -0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--orange-color);
+    width: 2rem;
+    height: 0.5rem;
+    clip-path: polygon(100% 0, 0 0, 53% 100%);
+}
+.text-img {
+    padding: 5rem 10rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+}
+.classes {
+    position: relative;
+}
+.background { /* arka plandaki gri alan*/
+    background-color: #f1f1f1;
+    position: absolute;
+    top:0;
+    right: 0;
+    clip-path: polygon(36% 0%, 100% 0, 100% 100%, 51% 100%);
+    z-index:-1;
+    width: 100%;
+    height: 100%;
+}
+.classes-text {
+    padding: 3rem;
+    width: 45rem;
+    height: 30rem;
+    color: var(--gray-color);
+    font-weight: bold;
+}
+.classes-text h3 {
+    font-size: 2.2rem;
+}
+.classes-text p{
+    font-size: 1.2rem;
+}
+/*******   Calculator Section   *******/
+
+.bmi-index {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 30rem;
+    width: 41rem;
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: var(--gray-color);
+    gap: 2.5rem;
+}
+.input {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap:1rem;
+    border: var(--gray-color);
+}
+.calculator > div > img{
+    height: 20rem;
+}
+.result{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: 1.7rem;
+    color: var(--gray-color);
+}
+.bmi-index > h2 {
+    color:var(--blue-color);
+    font-size: 3rem;
+}
+.img-bmi img {
+    height: 20rem;
+}
+.img-bmi {
+    position: relative;
+}
+.after {
+    content: "";
+    position: absolute;
+    bottom: -2rem;
+    left: var(--after-left);
+    background-color: var(--orange-color);
+    width: 3rem;
+    height: 2rem;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+.calculator {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 2rem 17rem;
+}
+ 
+/******* Trainer Section ******/
+
+.trainer {
+    background-color: var(--aquablue-color);
+}
+.trainer-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 9rem;
+    padding-bottom: 5rem;
+}
+.trainer-card{
+    position: relative;
+    z-index: 2;
+}
+.afters {
+    content: "";
+    position: absolute;
+    background-color: var(--blue-color);
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    height: 30%;
+    width: 107%;
+    z-index: -1;
+    transition: 0.3s ease;
+}
+.befores {
+    content: "";
+    position: absolute;
+    background-color: var(--blue-color);
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    height: 107%;
+    width: 40%;
+    z-index: -1;
+    transition: 0.3s ease;
+}
+.trainer-card > img {
+    height: 30rem;
+    width: 25rem;
+    border-radius: 0.5rem;
+    border-style: solid;
+    border-color: var(--orange-color);
+}
+.card-img:hover ~ .afters{
+    height:50%;
+}
+.card-img:hover ~ .befores{
+    width:60%;
+}
+.trainer-info {  /* trainerların adını gösteren div */
+    opacity: 0;
+    position: absolute;
+    background-color: var(--blue-color);
+    color:var(--text-color);
+    text-align: center;
+    font-size: 1.4rem;
+    padding-top: 2rem;
+    top: 65%;
+    left: 5%;
+    height: 30%;
+    width: 90%;
+    transition: opacity 0.7s ease;
+    clip-path: polygon(0 21%, 15% 21%, 15% 0%, 85% 0%, 85% 21%, 100% 21%, 100% 78%, 85% 78%, 85% 100%, 15% 100%, 15% 78%, 0 78%);
+}
+.card-img:hover ~ .trainer-info {
+   opacity: 1;
+}
+    
+/******* Purchase Section ******/
+
+.cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6rem;
+    color: var(--gray-color);
+}
+.card {
+    text-align: center;
+    border-style:hidden;
+    border-radius: 1rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Default biraz gölge verdim */
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 5rem;
+    background-color: #f0f0f0;
+    transition: box-shadow 0.3s;
+    transition: background-color 0.3s;
+}
+.card > img {
+    height: 25rem;
+    width: 20rem;
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+}
+.shop {
+    display: flex;
+    justify-content: last baseline;
+    gap: 4rem;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-top: 1rem;
+}
+.card:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* x-y-bulanıklık-renk */
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+}
+.card:hover .shop {
+    border-style: none;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    background-color: var(--blue-color);
+    color: var(--text-color);
+}
+
+/******* Review Section ******/
+
+.review {
+    background-color: var(--aquablue-color);
+}
+.client {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 7rem;
+}
+.client-head {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    margin-bottom: 7rem;
+    color: var(--gray-color);
+}
+.client-img {
+    border-radius: 50%;
+    height: 5rem;
+}
+.client-p {
+    width: 40rem;
+    height: 10rem;
+    background-color: var(--blue-color);
+    padding: 1rem;
+    margin-top: 1rem;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.client-title {
+    display: flex;
+}
+.client-p::after { /* sol taraftaki üçgeni yaptım */
+    content:"";
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    top:100%;
+    left:0;
+    background-color: #719beb;
+    clip-path: polygon(100% 0, 0 0, 100% 100%);
+}
+.client-head::after { /* sağ taraftaki üçgeni yaptım */
+    content:"";
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    top:100%;
+    right: 0;
+    background-color:  #719beb;
+    clip-path: polygon(100% 0, 0 0, 0 100%);
+}
+/******* Contact-Us Section ******/
+
+.contact {
+    color: var(--gray-color);
+    font-weight: bold;
+}
+.title {
+    font-size: 2.5rem;
+    color: var(--gray-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding-top:5rem;
+    padding-bottom: 5rem;
+    font-weight: bold;
+    text-align: center;
+}
+.shadow { /* başlıkların altındaki turuncu gölgeyi oluşturdum  */
+    height: 0.5rem;
+    width: 7rem;
+    border-radius: 1rem;
+    background-color: var(--orange-color);
+}
+.phone {
+    display: flex;
+    flex-direction: column;
+    
+}
+.email {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5rem;
+    margin-bottom: 1.5rem;
+}
+.email p {
+    font-size: 1.5rem;
+}
+.contact-us {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5rem;
+    margin-bottom: 7rem;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+.form > input,textarea {
+    border: none;
+    background-color: var(--aquablue-color);
+    padding: 1rem 2rem;
+    resize: none;
+}
+.appointment p {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/******* Footer Section *******/
+
+footer {
+    padding: 1rem 17rem;
+    font-size: 1.2rem;
+    background-color: var(--blue-color);
+    color: var(--text-color);
+}
+.footer-links > div > a {
+    color: var(--text-color);
+}
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap:10rem;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+}
+
+@media screen and (max-width: 576px) {
+   
+    /* Normal menüyü gizle */
+    header nav {
+        display: none;
+    }
+
+    /* Hamburger menüyü göster */
+    .hamburger-menu {
+        position: relative;
+        display: flex;
+        color: var(--text-color);
+    }
+    .show-menu {
+        display: flex;
+        position: absolute;
+        top: 8rem;
+        right:4rem;
+        flex-direction: column;
+        padding: 2rem 2rem;
+        text-align: center;
+        animation: slideIn 0.5s ease-in-out;
+        background-color: rgba(255, 255, 255, 0)
+    }
+
+    #navbar a {
+        padding: 0.5rem;
+        margin: 0.7rem;
+    }
+    
+    @keyframes slideIn {
+        0% {
+            opacity: 0;
+            transform: translateY(-100%);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        padding-top: 2rem;
+        padding-bottom: 1rem;
+    }
+    footer {
+        padding: 1rem 3rem;
+    }
+    .calculator {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 10rem;
+    }
+    .sign-btn {
+        padding: 0.5rem 1rem;
+        text-align: center;
+    }
+    .details-btn {
+        margin-left: 0.2rem;
+        text-align: center;
+    }
+    .hero-btns {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .client {
+        gap: 2rem;
+    }
+}
+    
